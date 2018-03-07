@@ -74,7 +74,10 @@
   */
 
 enum { MACRO_VERSION_INFO,
-       MACRO_ANY
+       MACRO_ANY,
+       R_AE,
+       R_OE,
+       R_AA
      };
 
 
@@ -131,7 +134,7 @@ enum { QWERTY, NUMPAD, FUNCTION }; // layers
 const Key keymaps[][ROWS][COLS] PROGMEM = {
 
   [QWERTY] = KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
+  (Key_Escape,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
    Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
    Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
    Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
@@ -223,6 +226,7 @@ static void anyKeyMacro(uint8_t keyState) {
 
  */
 
+
 const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   switch (macroIndex) {
 
@@ -233,6 +237,17 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
   case MACRO_ANY:
     anyKeyMacro(keyState);
     break;
+
+   case R_AE:
+      compose2(Key_A, true, Key_E, true, keyState);
+      break;
+   case R_OE: 
+      compose2(Key_Slash, false, Key_O, true, keyState);
+      break;
+   case R_AA:
+      compose2(Key_O, false, Key_A, true, keyState);
+      break; 
+
   }
   return MACRO_NONE;
 }
@@ -335,7 +350,7 @@ void setup() {
 
     // The macros plugin adds support for macros
     &Macros,
-
+ 
     // The MouseKeys plugin lets you add keys to your keymap which move the mouse.
     &MouseKeys,
 
