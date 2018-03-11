@@ -155,7 +155,7 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
    ___, ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___, ___, ___,
    Key_LeftShift, ___, ___, ___, ___, ___, ___,
-   ___, Key_Spacebar, ___, ___,
+   ___, Key_Spacebar, Key_Backspace, ___,
    ___,
 
    LockLayer(BOKMAL), ___, ___, ___, ___,           ___,           ___,
