@@ -153,16 +153,16 @@ const Key keymaps[][ROWS][COLS] PROGMEM = {
   [BOKMAL] =  KEYMAP_STACKED
   (___, ___, ___, ___, ___, ___, ___,
    ___, ___, ___, ___, ___, ___, ___,
-   ___, ___, ___, ___, ___, ___,
+   Key_Tab, ___, ___, ___, ___, ___,
    Key_LeftShift, ___, ___, ___, ___, ___, ___,
    ___, Key_Spacebar, Key_Backspace, ___,
    ___,
 
    LockLayer(BOKMAL), ___, ___, ___, ___,           ___,           ___,
-   ___,               ___, ___, ___, ___,           M(COMPOSE_AA), ___,
-                      ___, ___, ___, M(COMPOSE_OE), M(COMPOSE_AE), ___,
+   ___,               ___, ___, ___, ___,           ___, ___,
+                      ___, ___, ___,  ___, ___, ___,
    ___,               ___, ___, ___, ___,           ___,           ___,
-   ___, ___, ___, ___,
+   ___, ___, Key_Backspace, ___,
    ___),
 
 
@@ -419,7 +419,7 @@ void setup() {
   // We set the brightness of the rainbow effects to 150 (on a scale of 0-255)
   // This draws more than 500mA, but looks much nicer than a dimmer effect
   LEDRainbowEffect.brightness(150);
-  LEDRainbowWaveEffect.brightness(150);
+  LEDRainbowWaveEffect.brightness(200);
 
   // The LED Stalker mode has a few effects. The one we like is
   // called 'BlazingTrail'. For details on other options,
@@ -432,7 +432,7 @@ void setup() {
   // We want to make sure that the firmware starts with LED effects off
   // This avoids over-taxing devices that don't have a lot of power to share
   // with USB devices
-  LEDOff.activate();
+  LEDRainbowWaveEffect.activate();
 }
 
 /** loop is the second of the standard Arduino sketch functions.
